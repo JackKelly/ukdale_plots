@@ -20,12 +20,12 @@ params = {'figure.figsize': _mm_to_inches(180, 80), # 180 or 88mm wide for Scien
 
 rcParams.update(params)
 
-
-def format_axes(ax):
+def format_axes(ax, tick_size=4):
     for axis in [ax.xaxis, ax.yaxis]:
-        axis.set_tick_params(direction='out', color='k', size=4)    
+        axis.set_tick_params(direction='out', color='k', size=tick_size)    
 
     return ax
 
 
 FIG_DIR = expanduser("~/Dropbox/MyWork/imperial/PhD/writing/papers/scientific-data-2014/figures")
+
