@@ -1,4 +1,5 @@
 from __future__ import print_function, division
+from os.path import expanduser
 from pylab import rcParams
 import seaborn as sns
 sns.set(style="white")
@@ -26,3 +27,5 @@ def format_axes(ax):
 
     return ax
 
+
+FIG_DIR = expanduser("~/Dropbox/MyWork/imperial/PhD/writing/papers/scientific-data-2014/figures")

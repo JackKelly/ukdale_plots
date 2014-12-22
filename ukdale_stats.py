@@ -22,7 +22,7 @@ descriptions = []
 for house in range(2,6):
     print("*********** House", house, "*************")
     dataset.set_window(*window_per_house[house])
-    description = elec.describe()
+    description = dataset.buildings[house].describe()
     descriptions.append(description)
     print(description)
     print()
