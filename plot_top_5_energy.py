@@ -9,7 +9,7 @@ from os.path import join
 import pandas as pd
 
 from pylab import rcParams
-rcParams.update({'figure.figsize': plot_config._mm_to_inches(88, 90)})
+rcParams.update({'figure.figsize': plot_config._mm_to_inches(60, 90)})
 
 print("plotting energy bar...")
 
@@ -26,7 +26,7 @@ energy = top_k.energy_per_meter(mains=elec.mains(), per_period='D',
 energy.sort(ascending=False)
 
 ax = pd.DataFrame(energy).T.plot(kind='bar', stacked=True, grid=True,
-                                 edgecolor="none", legend=False)
+                                 edgecolor="none", legend=False, width=2)
 ax.set_xticks([])
 ax.set_ylabel('kWh', rotation=0, ha='right', va='center', labelpad=15)
 

@@ -8,7 +8,7 @@ import pytz
 from os.path import join
 
 from pylab import rcParams
-rcParams.update({'figure.figsize': plot_config._mm_to_inches(180, 200)})
+rcParams.update({'figure.figsize': plot_config._mm_to_inches(180, 150)})
 
 print("plotting good sections...")
 
