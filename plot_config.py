@@ -31,3 +31,9 @@ FIG_DIR = expanduser("~/Dropbox/MyWork/imperial/PhD/writing/papers/scientific-da
 
 BLUE = (0.2980392156862745, 0.4470588235294118, 0.6901960784313725)
 GREEN = (0.3333333333333333, 0.6588235294117647, 0.40784313725490196)
+
+new_names = {
+    'Light': 'Dimmable LED kitchen ceiling lights',
+    'Computer monitor': '24\" LCD computer monitor',
+    'Television': '34\" CRT television'
+}

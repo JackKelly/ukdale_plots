@@ -29,12 +29,6 @@ axes = elec.plot_multiple(axes, meter_keys, 'plot_power_histogram',
                           kwargs_per_meter, 
                           plot_kwargs={'color': plot_config.BLUE})
 
-new_names = {
-    'Light': 'Dimmable LED kitchen ceiling lights',
-    'Computer monitor': '24\" LCD computer monitor',
-    'Television': '34\" CRT television'
-}
-
 # Formatting
 for i, ax in enumerate(axes):
     ax.grid(False)
@@ -51,8 +45,8 @@ for i, ax in enumerate(axes):
         ax.set_xlabel('')
     
     title = ax.get_title()
-    if title in new_names:
-        title = new_names[title]
+    if title in plot_config.new_names:
+        title = plot_config.new_names[title]
     ax.set_title(title, y=0.95)
 
 plt.tight_layout()

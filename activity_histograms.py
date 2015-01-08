@@ -8,12 +8,12 @@ import pytz
 from os.path import join
 
 from pylab import rcParams
-rcParams.update({'figure.figsize': plot_config._mm_to_inches(88, 300)})
+rcParams.update({'figure.figsize': plot_config._mm_to_inches(88, 150)})
 
 print("plotting activity histograms...")
 
 dataset = DataSet('/data/mine/vadeec/merged/ukdale.h5')
-dataset.set_window("2013-03-01", None)
+dataset.set_window("2013-03-01", None)#"2013-08-01")
 elec = dataset.buildings[1].elec
 
 N = 9
@@ -40,9 +40,13 @@ for i, ax in enumerate(axes):
     else:
         ax.set_xlabel('')
         ax.set_xticklabels([])
+    title = ax.get_title()
+    if title in plot_config.new_names:
+        title = plot_config.new_names[title]
+    ax.set_title(title, y=0.95)
 
 plt.tight_layout()
-plt.subplots_adjust(hspace=0.5)
+plt.subplots_adjust(hspace=0.8)
 
 plt.draw()
 plt.savefig(join(plot_config.FIG_DIR, '09_appliance_activity_histograms.eps'), 
