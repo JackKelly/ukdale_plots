@@ -8,30 +8,22 @@ import pytz
 from os.path import join
 
 from pylab import rcParams
-rcParams.update({'figure.figsize': plot_config._mm_to_inches(180, 150)})
+rcParams.update({'figure.figsize': plot_config._mm_to_inches(180, 120)})
 
 print("plotting good sections...")
 
 dataset = DataSet('/data/mine/vadeec/merged/ukdale.h5')
-# dataset.set_window("2014-12-01", "2014-12-02") 
+# dataset.set_window("2013-06-01", "2013-06-02") 
+dataset.set_window(None, None) 
 
-axes = dataset.plot_good_sections()
+axes = dataset.plot_good_sections(color=plot_config.BLUE)
 
 for i, ax in enumerate(axes):
-    ax.grid(False)
     plot_config.format_axes(ax, tick_size=2)
-    for spine in ['bottom', 'left']:
-        ax.spines[spine].set_linewidth(0.5)    
-    sns.despine(ax=ax)
-    if i==1:
-        ax.set_ylabel('Meter')
-    elif i==4:
-        ax.set_xlabel('Date')
+    ax.set_title('House {:d}'.format(i+1), x=0.05, y=.4, va='top')    
+    ax.set_ylabel('Meter' if i == 1 else '', 
+                  rotation=0, ha='center', va='center', y=.4)
 
-plt.subplots_adjust(hspace=0.3)
-plt.tight_layout()
-
-plt.draw()
 
 plt.savefig(join(plot_config.FIG_DIR, '04_good_sections.eps'), 
             bbox_inches='tight')

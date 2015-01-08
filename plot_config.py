@@ -29,3 +29,4 @@ def format_axes(ax, tick_size=4):
 
 FIG_DIR = expanduser("~/Dropbox/MyWork/imperial/PhD/writing/papers/scientific-data-2014/figures")
 
+BLUE = (0.2980392156862745, 0.4470588235294118, 0.6901960784313725)
