@@ -51,5 +51,5 @@ plt.tight_layout()
 
 plt.draw()
 
-plt.savefig(join(plot_config.FIG_DIR, '07_top_5_energy.eps'), 
+plt.savefig(join(plot_config.FIG_DIR, '06_top_5_energy.eps'), 
             bbox_inches='tight')

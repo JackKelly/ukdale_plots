@@ -25,5 +25,5 @@ for i, ax in enumerate(axes):
                   rotation=0, ha='center', va='center', y=.4)
 
 
-plt.savefig(join(plot_config.FIG_DIR, '04_good_sections.eps'), 
+plt.savefig(join(plot_config.FIG_DIR, '03_good_sections.eps'), 
             bbox_inches='tight')

@@ -77,5 +77,5 @@ plt.tight_layout()
 
 plt.draw()
 
-plt.savefig(join(plot_config.FIG_DIR, '03_area_plot.eps'),
+plt.savefig(join(plot_config.FIG_DIR, '02_area_plot.eps'),
             bbox_inches='tight', dpi=plt.gcf().dpi)

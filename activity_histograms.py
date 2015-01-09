@@ -49,5 +49,5 @@ plt.tight_layout()
 plt.subplots_adjust(hspace=0.8)
 
 plt.draw()
-plt.savefig(join(plot_config.FIG_DIR, '09_appliance_activity_histograms.eps'), 
+plt.savefig(join(plot_config.FIG_DIR, '08_appliance_activity_histograms.eps'), 
             bbox_inches='tight')
