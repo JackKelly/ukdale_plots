@@ -34,6 +34,7 @@ for meter in submeters.meters:
 remainder = MeterGroup(remainder)
 remainder.name = 'Other submeters'
 selected_meters = MeterGroup(selected_meters[:2] + [remainder] + selected_meters[2:])
+selected_meters['HTPC'].name = 'Home theatre PC'
 
 # Reverse the colour palette so it matches top_5_energy
 colors = sns.color_palette('deep')
@@ -49,9 +50,8 @@ dataset.set_window(DATE, next_day)
 # Plot area
 # Need to use a linewidth of 0 to prevent nasty things appearing
 # in output.  Looks bad in plt.show() though!
-ax, df = selected_meters.plot(kind='area', unit=UNIT, width=4000, threshold=5)
-#                              plot_kwargs={'linewidth': 0.1})
-
+ax, df = selected_meters.plot(kind='area', unit=UNIT, width=4000, threshold=5,
+                              plot_kwargs={'linewidth': 0})
 
 # Plot mains
 ax = elec.mains().plot(ax=ax, unit=UNIT, width=10000,
@@ -61,7 +61,7 @@ ax = elec.mains().plot(ax=ax, unit=UNIT, width=10000,
 # Prettify
 ax.grid(False)
 ax.set_ylim([0, 4])
-ax.set_xlabel('Time (hour of day {})'.format(DATE))
+ax.set_xlabel('Time (hour of day)')
 ax.xaxis.set_major_formatter(DateFormatter("%H", tz=TZ))
 ax.xaxis.set_major_locator(HourLocator(interval=6, tz=TZ))
 for text in ax.get_xticklabels():
