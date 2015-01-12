@@ -1,13 +1,9 @@
 from __future__ import print_function, division
-from nilmtk import DataSet, TimeFrame, MeterGroup
+from nilmtk import DataSet
 import plot_config
 import seaborn as sns
-from matplotlib.dates import DateFormatter, HourLocator
 import matplotlib.pyplot as plt
-import pytz
 from os.path import join
-import pandas as pd
-
 from pylab import rcParams
 
 print("plotting energy bar...")
@@ -23,29 +19,12 @@ try:
     top_k['HTPC'].name = "Home theatre PC"
 except KeyError:
     pass
-energy = top_k.energy_per_meter(mains=elec.mains(), per_period='D',
-                                use_meter_labels=True)
 
-energy.sort(ascending=False)
-
+############
 # Plot
 rcParams.update({'figure.figsize': plot_config._mm_to_inches(70, 90)})
-ax = pd.DataFrame(energy).T.plot(kind='bar', stacked=True, grid=True,
-                                 edgecolor="none", legend=False, width=2)
-ax.set_xticks([])
-ax.set_ylabel('kWh\nper\nday', rotation=0, ha='center', va='center', labelpad=15)
-
-text_ys = energy.cumsum() - energy.cumsum().diff().fillna(energy['Remainder']) / 2
-for kwh, (label, y) in zip(energy.values, text_ys.iteritems()):
-    label += " ({:.2f})".format(kwh)
-    ax.annotate(label, (0, y), 
-                horizontalalignment='center', verticalalignment='center', 
-                color='white', size=8)
-    
+ax = top_k.plot(kind='energy bar', mains=elec.mains())
 sns.despine(ax=ax, bottom=True, left=True)
-
-# ax.grid(False)
-# plot_config.format_axes(ax, tick_size=1)
 
 plt.tight_layout()
 
